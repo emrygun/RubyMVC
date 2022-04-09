@@ -1,4 +1,4 @@
-module Rulers
+module RubyMVC
   class Application
 
     def get_controller_and_action(env)
@@ -12,7 +12,7 @@ module Rulers
 
     def get_controller(controller_path)
       controller = controller_path.to_s.capitalize + "Controller"
-      Rulers.resolve_const(controller)
+      RubyMVC.resolve_const(controller)
     end
 
     def get_action(controller_klass, action_path)

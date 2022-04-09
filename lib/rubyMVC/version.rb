@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module Rulers
+module RubyMVC
   VERSION = "0.1.1"
 end

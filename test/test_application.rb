@@ -1,15 +1,18 @@
 require_relative "test_helper"
 
-class TestApp < Rulers::Application
-end
-
-class TestController
-  def test
+class TestController < RubyMVC::RubyMVCController
+  def index
     "Hello"
   end
 end
 
-class RulersAppTest < Test::Unit::TestCase
+class TestApp < RubyMVC::Application
+  def get_controller_and_action(env)
+    [TestController, "index"]
+  end
+end
+
+class RubyMVCAppTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
@@ -17,11 +20,10 @@ class RulersAppTest < Test::Unit::TestCase
   end
 
   def test_request
-    get "test/test"
-
+    get("/test/index")
     assert last_response.ok?
+
     body = last_response.body
     assert body["Hello"]
   end
-
 end
